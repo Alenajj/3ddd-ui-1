@@ -1,0 +1,9 @@
+/* Только для Storybook: шрифт и фон страницы. На сайте Roboto уже подключён. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  margin: 0;
+  background: var(--color-bg-page);
+  color: var(--color-text-default);
+  font-family: var(--font-family-sans), system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+}

@@ -1,0 +1,130 @@
+/**
+ * 3ddd.ru — текстовые стили (классы)
+ * Сгенерировано из tokens/ (Figma «Кит для ии 2026»). Не править вручную: npm run build.
+ */
+
+/* Заголовок-витрина. — Первый экран лендинга. */
+.text-display {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-display);
+  line-height: var(--font-line-height-display);
+  letter-spacing: 0px;
+}
+
+/* Заголовок контента: пост блога, название работы в галерее. — Один на страницу. */
+.text-heading-xl {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-heading-xl);
+  line-height: var(--font-line-height-heading-xl);
+  letter-spacing: 0px;
+}
+
+/* Заголовок попапа или модалки. Заголовок страницы со списком контента (общая страница блогов, галереи, моделей), пустые состояния. Заголовок секции. — Roboto Bold · 24/32 (Desktop и Mobile) */
+.text-heading-md {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-heading-md);
+  line-height: var(--font-line-height-heading-md);
+  letter-spacing: 0px;
+}
+
+/* Малый заголовок. — Группа полей, подзаголовок в карточке. */
+.text-heading-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0px;
+}
+
+/* Крупный текст. — Вводные абзацы, статьи блога. */
+.text-body-lg {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0px;
+}
+
+/* Основной текст. — По умолчанию для любого текста. */
+.text-body-md {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+/* Выделенный основной текст. — Важное слово или фраза внутри текста. */
+.text-body-md-strong {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+/* Мелкий текст. — Таблицы, плотные списки, описания в карточках. */
+.text-body-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+/* Самая крупная подпись. — Кнопка Big 48. */
+.text-label-xl {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+/* Крупная подпись. — Крупные кнопки, пункты меню. */
+.text-label-lg {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+/* Подпись. — Кнопки, подписи полей, вкладки. */
+.text-label-md {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+/* Мелкая подпись. — Бейджи, мелкие кнопки, счётчики. */
+.text-label-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+/* Сноска. — Подсказки под полями, даты, мета-информация. */
+.text-caption-md {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+/* Микро-подпись. — Бейджи PRO / FREE, метка beta. Только короткие метки, лучше в верхнем регистре. */
+.text-caption-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0px;
+}

@@ -1,0 +1,268 @@
+/**
+ * 3ddd.ru — CSS-переменные токенов
+ * Сгенерировано из tokens/ (Figma «Кит для ии 2026»). Не править вручную: npm run build.
+ */
+:root {
+
+  /* Примитивы цвета (Color New) */
+  --gray-200: #F1F0EE; /* gray button */
+  --gray-300: #EAE8E6; /* gray button hover */
+  --gray-400: #DEDCDA;
+  --gray-500: #ACA8A7; /* disabled */
+  --gray-600: #C4C2BD; /* text placeholder */
+  --gray-700: #92908C; /* secondary text */
+  --gray-800: #63615F;
+  --gray-900: #423F3C;
+  --gray-1000: #1B1916; /* цвет текста */
+  --gray-000: #FFFFFF; /* White */
+  --green-100: #006428;
+  --green-200: #00822A; /* pro color */
+  --green-400: #52A550;
+  --green-500: #59B15F;
+  --green-600: #89E58C;
+  --green-700: #AAF0AA;
+  --green-800: #E1FFE1;
+  --blue-100: #E3F4FC; /* 30 Hover Gray blue */
+  --blue-200: #C2E7FF; /* 20 Norm white blue */
+  --blue-300: #64B0E3; /* 15 Hover white blue */
+  --blue-350: #01AEFF; /* blue link */
+  --blue-400: #0881CC; /* 10 Brand color. #2486C3 — промежуточный цвет */
+  --blue-500: #036CAD; /* 8 Hover button */
+  --blue-600: #00578D; /* 6 active button */
+  --blue-700: #1C4775; /* 4 small active. color(display-p3 0.1092 0.2776 0.4598) */
+  --red-100: #FFEBE9; /* Error Field */
+  --red-200: #FF5C66; /* Error button */
+  --red-300: #EF414C; /* Error button hover */
+  --red-400: #EF0D0C; /* Error color */
+  --red-500: #FF2E55; /* like color */
+  --red-600: #D70015;
+  --red-700: #B80014;
+  --red-800: #99000F;
+  --n-100: rgba(175, 168, 160, .12); /* Transparent hover */
+  --n-200: rgba(175, 168, 160, .24); /* Transparent active. Для прозрачных ховеров 7, 4 и 2 процента */
+  --n-300: rgba(175, 168, 160, .5); /* Transparent full 50 */
+  --n-400: rgba(175, 168, 160, .7); /* Transparent full 70 */
+  --n-500: rgba(0, 0, 0, .3); /* Transparent background 30 */
+  --n-600: rgba(0, 0, 0, .75); /* Transparent background 75 */
+  --orange-100: #FFF1E6; /* Фон предупреждения, бейдж «Покупатель» */
+  --orange-600: #DC5000; /* Текст предупреждения, бейдж «Покупатель» */
+  --brand-vray: #2857AF; /* Фирменный цвет V-Ray */
+  --brand-corona: #FA520A; /* Фирменный цвет Corona */
+  --brand-corona-light: #FFE6CE; /* Светлый фон логотипа Corona */
+
+  /* Семантические цвета (Color) */
+  --color-bg-page: var(--gray-000); /* Фон страницы. */
+  --color-bg-section: var(--gray-200); /* Фон полосы-секции. */
+  --color-bg-inverse: var(--gray-800); /* Тёмный фон. */
+  --color-bg-inverse-strong: var(--gray-900); /* Самый тёмный фон. */
+  --color-fill-skeleton: var(--gray-200); /* Скелетон. */
+  --color-fill-accent: var(--blue-400); /* = blue/400 */
+  --color-fill-accent-hover: var(--blue-500); /* = blue/500 */
+  --color-fill-accent-active: var(--blue-600); /* = blue/600 */
+  --color-fill-accent-subtle: var(--blue-100); /* Лёгкая голубая подсветка. */
+  --color-fill-disabled: var(--gray-200); /* = gray/200 */
+  --color-fill-danger: var(--red-600); /* Опасная кнопка — обычное состояние. */
+  --color-fill-success: var(--green-500); /* Зелёная кнопка — обычное состояние. */
+  --color-fill-danger-hover: var(--red-700); /* Опасная кнопка — наведение. */
+  --color-fill-danger-active: var(--red-800); /* Опасная кнопка — активная. */
+  --color-fill-accent-soft: var(--blue-200); /* Мягкая синяя кнопка — обычное состояние. */
+  --color-fill-accent-soft-hover: var(--blue-300); /* Мягкая синяя кнопка — наведение. */
+  --color-fill-accent-soft-active: var(--blue-400); /* Мягкая синяя кнопка — активная. */
+  --color-fill-active: var(--blue-200); /* Активная серая или белая кнопка. */
+  --color-fill-neutral: var(--gray-200); /* Серая кнопка — обычное состояние. */
+  --color-fill-neutral-hover: var(--gray-300); /* Серая заливка при наведении. */
+  --color-fill-base: var(--gray-000); /* Белая кнопка. */
+  --color-fill-inverse: var(--n-600); /* Чёрная кнопка — обычное состояние. */
+  --color-fill-inverse-hover: var(--gray-1000); /* Чёрная кнопка — наведение и активная. */
+  --color-fill-success-hover: var(--green-200); /* Зелёная кнопка — наведение. */
+  --color-fill-success-active: var(--green-100); /* Зелёная кнопка — активная. */
+  --color-fill-input: var(--gray-300); /* Фон поля ввода. */
+  --color-fill-ghost-hover: var(--n-100); /* Прозрачная кнопка — наведение. */
+  --color-fill-ghost-active: var(--n-200); /* Прозрачная кнопка — активная. */
+  --color-fill-switch-off: var(--gray-500); /* Трек переключателя — выключен. */
+  --color-fill-tag: var(--gray-300); /* Тег — обычное состояние. */
+  --color-fill-tag-hover: var(--gray-700); /* Тег — наведение. */
+  --color-fill-tag-active: var(--gray-800); /* Тег — активный. */
+  --color-fill-neutral-strong: var(--gray-800); /* Тёмная нейтральная заливка элемента. */
+  --color-fill-neutral-strong-hover: var(--gray-900); /* Тёмная нейтральная заливка — наведение. */
+  --color-fill-neutral-strong-active: var(--gray-1000); /* Тёмная нейтральная заливка — активная. */
+  --color-surface-danger: var(--red-100); /* Фон ошибки. */
+  --color-surface-success: var(--green-800); /* Фон успеха. */
+  --color-surface-info: var(--blue-100); /* Фон подсказки. */
+  --color-surface-default: var(--gray-000); /* Фон карточки. */
+  --color-surface-raised: var(--gray-000); /* Фон всплывающего слоя. */
+  --color-surface-subtle: var(--gray-200); /* Фон плашки. */
+  --color-surface-success-strong: var(--green-700); /* = green/700 */
+  --color-surface-warning: var(--orange-100); /* Фон предупреждения. */
+  --color-overlay-scrim: var(--n-500); /* Затемнение под модалкой. */
+  --color-overlay-image: var(--n-500); /* Затемнение на картинке. */
+  --color-overlay-image-hover: var(--n-600); /* Затемнение картинки при наведении. */
+  --color-text-default: var(--gray-1000); /* Основной текст. */
+  --color-text-muted: var(--gray-900); /* Второстепенный текст. */
+  --color-text-subtle: var(--gray-800); /* Третичный текст. */
+  --color-text-disabled: var(--gray-500); /* = gray/500 */
+  --color-text-inverse: var(--gray-000); /* Текст на тёмном. */
+  --color-text-on-accent: var(--gray-000); /* = gray/000 */
+  --color-text-accent: var(--blue-600); /* Акцентный текст. */
+  --color-text-danger: var(--red-600); /* Текст ошибки. */
+  --color-text-success: var(--green-200); /* Текст успеха. */
+  --color-text-accent-hover: var(--blue-700); /* Акцентный текст — наведение и активная. */
+  --color-text-on-accent-soft: var(--blue-600); /* Текст на мягкой синей кнопке. */
+  --color-text-inverse-muted: var(--gray-200); /* Второстепенный текст на тёмном. */
+  --color-text-inverse-disabled: var(--gray-700); /* Неактивный текст на тёмном. */
+  --color-text-placeholder: var(--gray-800); /* Плейсхолдер. */
+  --color-text-link: var(--blue-400); /* Ссылка и вкладка. */
+  --color-text-warning: var(--orange-600); /* Текст предупреждения. */
+  --color-border-default: var(--gray-300); /* Обычная рамка. */
+  --color-border-subtle: var(--gray-200); /* Тонкий разделитель. */
+  --color-border-strong: var(--gray-600); /* Заметная рамка. */
+  --color-border-focus: var(--blue-300); /* Рамка в фокусе. */
+  --color-border-accent: var(--blue-400); /* Акцентная рамка. */
+  --color-border-danger: var(--red-600); /* Рамка ошибки. */
+  --color-border-disabled: var(--gray-300); /* Рамка неактивного. */
+  --color-border-active: var(--blue-200); /* Рамка активной кнопки. */
+  --color-border-input: var(--gray-400); /* Рамка поля поиска. */
+  --color-border-success: var(--green-400); /* Рамка успеха. */
+  --color-border-inverse: var(--gray-000); /* Белая обводка. */
+  --color-icon-default: var(--gray-900); /* Основная иконка. */
+  --color-icon-muted: var(--gray-700); /* Второстепенная иконка. */
+  --color-icon-on-accent: var(--gray-000); /* = gray/000 */
+  --color-icon-accent: var(--blue-600); /* Акцентная иконка. */
+  --color-icon-strong: var(--gray-1000); /* Выделенная иконка. */
+  --color-icon-favorite: var(--red-500); /* Иконка «в избранном». */
+  --color-icon-disabled: var(--gray-600); /* Светлая или неактивная иконка. */
+  --color-icon-subtle: var(--gray-400); /* Декоративная мелкая иконка. */
+  --color-icon-accent-hover: var(--blue-700); /* Акцентная иконка — наведение и активная. */
+  --color-icon-success: var(--green-400); /* Иконка успешного действия (галочка в папке и т.п.). */
+  --color-icon-success-subtle: var(--green-700); /* Светло-зелёная иконка успеха (Success Light, Info Success). */
+  --color-icon-danger: var(--red-600); /* Иконка ошибки/предупреждения. Совпадает с text/danger. */
+  --color-render-vray: var(--brand-vray); /* Рендер V-Ray — выбранная кнопка (Active). */
+  --color-render-corona: var(--brand-corona); /* Рендер Corona — выбранная кнопка (Active). */
+  --color-render-corona-subtle: var(--brand-corona-light); /* Светлая подложка логотипа Corona в кнопке рендера. */
+  --color-render-standard: var(--gray-700); /* Рендер Standard — выбранная кнопка (Active). */
+
+  /* Размеры: space, radius, size, border-width (Dimension) */
+  --space-0: 0px; /* Без отступа. */
+  --space-2: 2px; /* Отступ 2. */
+  --space-4: 4px; /* Отступ 4. */
+  --space-6: 6px; /* Отступ 6. */
+  --space-8: 8px; /* Отступ 8. */
+  --space-10: 10px; /* Отступ 10. */
+  --space-12: 12px; /* Отступ 12. */
+  --space-16: 16px; /* Отступ 16. */
+  --space-20: 20px; /* Отступ 20. */
+  --space-24: 24px; /* Отступ 24. */
+  --space-32: 32px; /* Отступ 32. */
+  --space-48: 48px; /* Отступ 48. */
+  --space-60: 60px; /* Отступ 60. */
+  --space-72: 72px; /* Отступ 72. */
+  --space-80: 80px; /* Отступ 80. */
+  --space-96: 96px; /* Отступ 96. */
+  --radius-0: 0px; /* Без скругления. */
+  --radius-2: 2px; /* Скругление 2. */
+  --radius-4: 4px; /* Скругление 4. */
+  --radius-6: 6px; /* Скругление 6. */
+  --radius-8: 8px; /* Скругление 8. */
+  --radius-12: 12px; /* Скругление 12. */
+  --radius-16: 16px; /* Скругление 16. */
+  --radius-24: 24px; /* Скругление 24. */
+  --radius-full: 9999px; /* Полное скругление. */
+  --size-control-sm: 28px; /* Высота контрола S · 28. */
+  --size-control-lg: 48px; /* Высота контрола L · 48. */
+  --size-icon-sm: 16px; /* Иконка S. */
+  --size-icon-md: 20px; /* Иконка M. */
+  --size-icon-lg: 24px; /* Иконка L. */
+  --size-text-max: 756px; /* Максимальная ширина текстовой колонки — 756. */
+  --border-width-default: 1px; /* Толщина обычной рамки. */
+  --border-width-strong: 2px; /* Толщина заметной рамки. */
+  --border-width-focus: 2px; /* Толщина рамки фокуса. */
+
+  /* Шрифт (Typography) */
+  --font-family-sans: Roboto; /* Основной шрифт. */
+  --font-weight-regular: 400; /* Обычное начертание. */
+  --font-weight-medium: 500; /* Среднее начертание. */
+  --font-weight-bold: 700; /* Жирное начертание. */
+
+  /* Адаптивные — значения Desktop (Responsive) */
+  --space-control-y: 8px; /* Отступ кнопки сверху и снизу. */
+  --space-control-x: 16px; /* Боковой отступ кнопки. */
+  --space-control-x-round: 20px; /* Боковой отступ круглой кнопки. */
+  --size-control-md: 36px; /* Высота контрола M. */
+  --font-size-display: 54px; /* Размер шрифта display. */
+  --font-size-heading-xl: 32px; /* Размер шрифта heading-xl. */
+  --font-size-heading-md: 24px; /* Размер шрифта heading-md. */
+  --font-line-height-display: 60px; /* Межстрочный интервал display. */
+  --font-line-height-heading-xl: 38px; /* Межстрочный интервал heading-xl. */
+  --font-line-height-heading-md: 32px; /* Межстрочный интервал heading-md. */
+
+  /* Тени */
+  --shadow-sm: 0px 1px 2px 0px #1b19160f; /* Малая тень. */
+  --shadow-md: 0px 4px 12px 0px #1b19161a; /* Средняя тень. */
+  --shadow-lg: 0px 12px 32px 0px #1b191629; /* Большая тень. */
+}
+
+/* Примитивы в oklch — для экранов с широким охватом (как на сайте). Семантические цвета ссылаются на них */
+@media (color-gamut: p3) {
+  :root {
+    --gray-200: oklch(95.5% .002878 84.6);
+    --gray-300: oklch(93.2% .003459 67.8);
+    --gray-400: oklch(89.5% .003493 67.8);
+    --gray-500: oklch(73.5% .004835 34.3);
+    --gray-600: oklch(81.4% .007276 88.7);
+    --gray-700: oklch(65.4% .006314 84.6);
+    --gray-800: oklch(49.4% .004053 67.7);
+    --gray-900: oklch(37% .006532 67.6);
+    --gray-1000: oklch(21.5% .006557 78.2);
+    --gray-000: oklch(100% 0 0);
+    --green-100: oklch(43.9% .123851 149);
+    --green-200: oklch(52.8% .159322 146.5);
+    --green-400: oklch(64.9% .145649 143.2);
+    --green-500: oklch(68.6% .144836 145.1);
+    --green-600: oklch(84.3% .150475 144.8);
+    --green-700: oklch(89.1% .117785 144.5);
+    --green-800: oklch(97% .050434 145.2);
+    --blue-100: oklch(95.7% .020969 227.5);
+    --blue-200: oklch(90.9% .050829 236.6);
+    --blue-300: oklch(72.8% .106061 239.8);
+    --blue-350: oklch(71.6% .164641 240.3);
+    --blue-400: oklch(58.4% .146753 245.6);
+    --blue-500: oklch(51.5% .130788 245.8);
+    --blue-600: oklch(44.2% .11301 245.7);
+    --blue-700: oklch(39.2% .091514 252.5);
+    --red-100: oklch(95.5% .022017 24.4);
+    --red-200: oklch(69.3% .197789 20.4);
+    --red-300: oklch(63.5% .20961 22.3);
+    --red-400: oklch(60.1% .242444 28.9);
+    --red-500: oklch(65% .237728 18);
+    --red-600: oklch(55.3% .22549 27.3);
+    --red-700: oklch(49.2% .200468 26.7);
+    --red-800: oklch(43% .174918 26.6);
+    --n-100: oklch(73.5% .013948 71.3 / 12%);
+    --n-200: oklch(73.5% .013948 71.3 / 24%);
+    --n-300: oklch(73.5% .013948 71.3 / 50%);
+    --n-400: oklch(73.5% .013948 71.3 / 70%);
+    --n-500: oklch(0 0 0 / 30%);
+    --n-600: oklch(0 0 0 / 75%);
+    --orange-100: oklch(96.6% .02108 60.8);
+    --orange-600: oklch(61.4% .188224 41.2);
+    --brand-vray: oklch(47.5% .149906 261.5);
+    --brand-corona: oklch(66.5% .214479 38);
+    --brand-corona-light: oklch(93.9% .041981 66.1);
+  }
+}
+
+/* Адаптивные — значения Mobile */
+@media (max-width: 767.98px) {
+  :root {
+    --space-control-y: 12px;
+    --space-control-x: 16px;
+    --space-control-x-round: 20px;
+    --size-control-md: 44px;
+    --font-size-display: 36px;
+    --font-size-heading-xl: 28px;
+    --font-size-heading-md: 24px;
+    --font-line-height-display: 44px;
+    --font-line-height-heading-xl: 34px;
+    --font-line-height-heading-md: 32px;
+  }
+}
