@@ -1,0 +1,39 @@
+@if (label()) {
+  <label class="ui-field__label text-label-md" [class.ui-field__label--disabled]="isDisabled()" [attr.for]="controlId()">{{ label() }}</label>
+}
+<div class="ui-field__box">
+  <div [class]="boxClasses()">
+    @if (icon(); as name) {
+      <span class="ui-input__icon"><ui-icon [name]="name" /></span>
+    }
+    <input
+      class="ui-input__control text-body-md-strong"
+      [id]="controlId()"
+      [type]="type()"
+      [value]="value()"
+      [placeholder]="placeholder()"
+      [disabled]="isDisabled()"
+      [readOnly]="readonly()"
+      [attr.name]="name() || null"
+      [attr.autocomplete]="autocomplete() || null"
+      [attr.aria-invalid]="invalid() ? 'true' : null"
+      [attr.aria-describedby]="hint() ? hintId() : null"
+      (input)="onInput($event)"
+      (blur)="onTouched()"
+    />
+    @if (clearable() && value() && !isDisabled() && !readonly()) {
+      <button type="button" class="ui-input__clear" aria-label="Очистить" (click)="clear()">
+        <ui-icon name="close" />
+      </button>
+    }
+  </div>
+  @if (hint()) {
+    <div
+      class="ui-field__hint text-label-md"
+      [id]="hintId()"
+      [class.ui-field__hint--invalid]="invalid()"
+      [class.ui-field__hint--valid]="valid() && !invalid()"
+      [class.ui-field__hint--disabled]="isDisabled()"
+    >{{ hint() }}</div>
+  }
+</div>

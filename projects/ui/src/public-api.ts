@@ -16,7 +16,7 @@ export * from './lib/icon/icons';
 // (добавится в PR checkbox)
 
 // Input
-// (добавится в PR input)
+export * from './lib/input/input';
 
 // Menu Item
 // (добавится в PR menu-item)

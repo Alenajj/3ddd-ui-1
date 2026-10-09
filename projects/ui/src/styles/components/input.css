@@ -1,0 +1,138 @@
+/*
+ * Input — Figma «Кит для ии 2026», Input (1:8091).
+ * Без Angular:
+ *   <div class="ui-field">
+ *     <label class="ui-field__label text-label-md" for="email">Почта</label>
+ *     <div class="ui-input">
+ *       <input id="email" class="ui-input__control text-body-md-strong" placeholder="mail@example.ru">
+ *     </div>
+ *     <div class="ui-field__hint text-label-md">Подсказка</div>
+ *   </div>
+ * Состояния: .ui-input--invalid, --valid, --disabled, --readonly; «заполнено» — .ui-input--filled.
+ *
+ * Высота size-control-md (36, ниже 768 — 44), поля 8, промежуток 8, скругление 8.
+ * Введённый текст — 16/24 Medium (text-body-md-strong), подсказка-плейсхолдер — 16/24 Regular.
+ */
+.ui-input {
+  --ui-input-border: var(--color-border-strong);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  box-sizing: border-box;
+  height: var(--size-control-md);
+  padding: 0 var(--space-8);
+  border: var(--border-width-default) solid var(--ui-input-border);
+  border-radius: var(--radius-8);
+  background: var(--color-surface-default);
+  color: var(--color-text-default);
+  transition-property: border-color, background-color, color;
+  transition-duration: var(--motion-duration-out);
+  transition-timing-function: var(--motion-easing-out);
+}
+
+.ui-input--filled { --ui-input-border: var(--color-border-default); }
+.ui-input:hover,
+.ui-input:focus-within {
+  --ui-input-border: var(--color-border-focus);
+  transition-duration: var(--motion-duration-in);
+}
+.ui-input--invalid,
+.ui-input--invalid:hover { --ui-input-border: var(--color-border-danger); }
+.ui-input--valid,
+.ui-input--valid:hover { --ui-input-border: var(--color-border-success); }
+
+.ui-input--disabled,
+.ui-input--disabled:hover {
+  --ui-input-border: var(--color-border-disabled);
+  background: var(--color-fill-base);
+  color: var(--color-text-disabled);
+}
+
+/* Read Only — просто текст, без рамки и полей. */
+.ui-input--readonly,
+.ui-input--readonly:hover {
+  height: auto;
+  padding: 0;
+  border-color: transparent;
+}
+
+/* В ките поле 44 на телефоне — у size="mobile" и само ниже 768 (через токен). */
+.ui-input--mobile { height: 44px; }
+
+.ui-input__control {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+.ui-input__control::placeholder {
+  color: var(--color-text-placeholder);
+  font-weight: var(--font-weight-regular);
+}
+/* Рамка поля показывает фокус, поэтому у самого <input> контур не нужен. */
+.ui-input__control:focus { outline: none; }
+.ui-input:has(.ui-input__control:focus-visible) {
+  outline: var(--border-width-focus) solid var(--color-border-focus);
+  outline-offset: 1px;
+}
+
+.ui-input__icon { display: flex; color: var(--color-icon-muted); }
+
+/* Крестик очистки (Close Button 24 / 44 из кита). */
+.ui-input__clear {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-icon-muted);
+  cursor: pointer;
+}
+.ui-input__clear {
+  transition-property: background-color, color;
+  transition-duration: var(--motion-duration-out);
+  transition-timing-function: var(--motion-easing-out);
+}
+.ui-input__clear:hover {
+  transition-duration: var(--motion-duration-in);
+  background: var(--color-fill-ghost-hover); color: var(--color-icon-default); }
+.ui-input__clear:active { background: var(--color-fill-ghost-active); color: var(--color-icon-strong); }
+
+.ui-input--mobile .ui-input__clear { width: 44px; height: 44px; margin-right: calc(var(--space-8) * -1); }
+@media (max-width: 767.98px) {
+  .ui-input__clear { width: 44px; height: 44px; margin-right: calc(var(--space-8) * -1); }
+}
+
+/* ---------- Заголовок и подпись ---------- */
+.ui-field { display: flex; flex-direction: column; gap: var(--space-8); }
+.ui-field__label { color: var(--color-text-default); }
+.ui-field__label--disabled { color: var(--color-text-disabled); }
+.ui-field__box { position: relative; }
+
+/* Подпись под полем стоит абсолютом и не двигает соседей. Между полями формы — space-32. */
+.ui-field__hint {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: var(--space-4);
+  overflow: hidden;
+  color: var(--color-text-subtle);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ui-field__hint--invalid { color: var(--color-text-danger); }
+.ui-field__hint--valid { color: var(--color-text-success); }
+.ui-field__hint--disabled { color: var(--color-text-disabled); }
