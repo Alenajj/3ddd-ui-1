@@ -1,0 +1,106 @@
+/*
+ * Checkbox — Figma «Кит для ии 2026», Checkbox (1:8037) и Checkbox / With Label (1:8080).
+ * Без Angular:
+ *   <label class="ui-checkbox">
+ *     <span class="ui-checkbox__control">
+ *       <input type="checkbox" class="ui-checkbox__input">
+ *       <span class="ui-checkbox__box" aria-hidden="true">
+ *         <svg class="ui-checkbox__mark ui-checkbox__mark--check">…галочка…</svg>
+ *         <svg class="ui-checkbox__mark ui-checkbox__mark--dash">…черта…</svg>
+ *       </span>
+ *     </span>
+ *     <span class="ui-checkbox__label text-label-lg">Современный</span>
+ *   </label>
+ *
+ * Квадрат 20, скругление 6. Подпись 16/20 Medium через 10.
+ */
+ui-checkbox { display: inline-flex; }
+
+.ui-checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+  color: var(--color-text-default);
+  cursor: pointer;
+}
+
+.ui-checkbox--disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+
+.ui-checkbox__control { position: relative; display: inline-flex; flex: none; width: 20px; height: 20px; }
+
+/* Настоящий input лежит поверх квадрата: клики, клавиатура и скринридер работают как обычно. */
+.ui-checkbox__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.ui-checkbox__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: var(--border-width-default) solid var(--color-icon-muted);
+  border-radius: var(--radius-6);
+  /* Как в ките: лёгкая подложка fill/ghost-hover поверх белого. */
+  background: var(--color-surface-default);
+  box-shadow: inset 0 0 0 var(--space-10) var(--color-fill-ghost-hover);
+  color: var(--color-icon-on-accent);
+  pointer-events: none;
+  position: relative;
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: var(--motion-duration-out);
+  transition-timing-function: var(--motion-easing-out);
+}
+
+.ui-checkbox__mark {
+  position: absolute;
+  inset: calc(var(--border-width-default) * -1);
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--motion-duration-out);
+  transition-timing-function: var(--motion-easing-out);
+}
+
+.ui-checkbox:hover .ui-checkbox__box {
+  transition-duration: var(--motion-duration-in);
+  box-shadow: none;
+  border-color: var(--color-fill-accent-soft-hover);
+  background: var(--color-fill-active);
+}
+
+.ui-checkbox__input:checked + .ui-checkbox__box,
+.ui-checkbox__input:indeterminate + .ui-checkbox__box {
+  transition-duration: var(--motion-duration-in);
+  border-color: var(--color-fill-accent);
+  background: var(--color-fill-accent);
+  box-shadow: none;
+}
+.ui-checkbox__input:checked:not(:indeterminate) + .ui-checkbox__box .ui-checkbox__mark--check,
+.ui-checkbox__input:indeterminate + .ui-checkbox__box .ui-checkbox__mark--dash {
+  opacity: 1;
+  transition-duration: var(--motion-duration-in);
+}
+
+/* Disabled: белый квадрат с бледной рамкой. Выбранного Disabled в ките нет — галочка бледная. */
+.ui-checkbox__input:disabled + .ui-checkbox__box,
+.ui-checkbox--disabled:hover .ui-checkbox__box {
+  border-color: var(--color-icon-subtle);
+  background: var(--color-icon-on-accent);
+  box-shadow: none;
+  color: var(--color-icon-subtle);
+}
+
+.ui-checkbox__input:focus-visible + .ui-checkbox__box {
+  outline: var(--border-width-focus) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.ui-checkbox__label { min-width: 0; }
+.ui-checkbox__label:empty { display: none; }

@@ -1,0 +1,25 @@
+<label class="ui-checkbox" [class.ui-checkbox--disabled]="isDisabled()">
+  <span class="ui-checkbox__control">
+    <input
+      type="checkbox"
+      class="ui-checkbox__input"
+      [checked]="checked()"
+      [indeterminate]="indeterminate()"
+      [disabled]="isDisabled()"
+      [attr.name]="name() || null"
+      [attr.value]="value() || null"
+      [attr.aria-label]="inputAriaLabel()"
+      (change)="onToggle($event)"
+      (blur)="onTouched()"
+    />
+    <span class="ui-checkbox__box" aria-hidden="true">
+      <svg class="ui-checkbox__mark ui-checkbox__mark--check" width="20" height="20" viewBox="0 0 20 20">
+        <path d="M16 6.34093L9.58793 14.305C8.80395 15.2786 7.39359 15.2206 6.67917 14.1857L4 10.3041L5.4992 9.08242L8.17745 12.964L14.5904 5L16 6.34093Z" fill="currentColor" />
+      </svg>
+      <svg class="ui-checkbox__mark ui-checkbox__mark--dash" width="20" height="20" viewBox="0 0 20 20">
+        <path d="M5 10H15" stroke="currentColor" stroke-width="2" />
+      </svg>
+    </span>
+  </span>
+  <span class="ui-checkbox__label text-label-lg"><ng-content /></span>
+</label>

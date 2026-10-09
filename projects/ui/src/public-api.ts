@@ -13,7 +13,7 @@ export * from './lib/icon/icons';
 // (добавится в PR tag)
 
 // Checkbox
-// (добавится в PR checkbox)
+export * from './lib/checkbox/checkbox';
 
 // Input
 // (добавится в PR input)
