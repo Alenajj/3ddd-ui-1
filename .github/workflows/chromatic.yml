@@ -1,0 +1,42 @@
+# Storybook для согласования: при каждом обновлении ветки или pull request
+# GitHub собирает Storybook из кода этой ветки и публикует в Chromatic.
+# Ссылка на Storybook появляется в pull request (проверка «Storybook Publish»).
+#
+# Нужен секрет репозитория CHROMATIC_PROJECT_TOKEN
+# (Settings → Secrets and variables → Actions). Его добавляет владелец репозитория.
+name: Storybook (Chromatic)
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+concurrency:
+  group: chromatic-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  chromatic:
+    name: Собрать и опубликовать Storybook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # Chromatic сравнивает с предыдущими сборками по истории git
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24 # Angular 22 требует Node 24.15+
+          cache: npm
+
+      - name: Установить зависимости
+        run: npm ci
+
+      - name: Опубликовать в Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          # Изменения внешнего вида не роняют проверку — их принимают в Chromatic.
+          exitZeroOnChanges: true
+          exitOnceUploaded: true

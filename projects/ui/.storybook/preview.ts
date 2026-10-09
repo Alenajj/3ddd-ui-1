@@ -4,9 +4,19 @@ import '../src/styles/tokens.css';
 import '../src/styles/text-styles.css';
 import './preview.css';
 
+// Служебные поля и методы компонентов — не показываем в таблице свойств.
+const hidden = [
+  'classes', 'boxClasses', 'path', 'controlId', 'hintId', 'isDisabled', 'inputAriaLabel',
+  'onTouched', 'onToggle', 'onInput', 'clear',
+  'writeValue', 'registerOnChange', 'registerOnTouched', 'setDisabledState',
+];
+
 const preview: Preview = {
+  argTypes: Object.fromEntries(hidden.map((name) => [name, { table: { disable: true } }])),
   parameters: {
     layout: 'padded',
+    // «Show code» показывает исходник истории — шаблон с разметкой компонента.
+    docs: { source: { type: 'code' } },
     backgrounds: {
       options: {
         page: { name: 'Страница', value: 'var(--color-bg-page)' },

@@ -1,19 +1,24 @@
-// Копирует собранные токены из 3ddd-design-system/dist/css в библиотеку.
+// Копирует собранные токены и текстовые стили из 3ddd-design-system/dist в библиотеку.
 // Источник токенов — Figma «Кит для ии 2026» → 3ddd-design-system (npm run build там).
 // Запуск: npm run sync-tokens
 import { copyFileSync, existsSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const src = fileURLToPath(new URL('../../3ddd-design-system/dist/css/', import.meta.url));
+const root = fileURLToPath(new URL('../../3ddd-design-system/dist/', import.meta.url));
 const dest = fileURLToPath(new URL('../projects/ui/src/styles/', import.meta.url));
-const files = ['tokens.css', 'text-styles.css'];
+// [откуда в dist, куда в projects/ui/src/styles]
+const files = [
+  ['css/tokens.css', 'tokens.css'],
+  ['css/text-styles.css', 'text-styles.css'],
+  ['scss/_text-styles.scss', '_text-styles.scss'],
+];
 
-if (!existsSync(src)) {
-  console.error('Нет папки с токенами: ' + src + '\nСоберите их в 3ddd-design-system: npm run build');
+if (!existsSync(root)) {
+  console.error('Нет папки с токенами: ' + root + '\nСоберите их в 3ddd-design-system: npm run build');
   process.exit(1);
 }
 mkdirSync(dest, { recursive: true });
-for (const f of files) {
-  copyFileSync(src + f, dest + f);
-  console.log('→ ' + f);
+for (const [from, to] of files) {
+  copyFileSync(root + from, dest + to);
+  console.log('→ ' + to);
 }

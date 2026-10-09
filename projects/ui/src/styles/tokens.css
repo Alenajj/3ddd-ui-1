@@ -199,6 +199,11 @@
   --shadow-sm: 0px 1px 2px 0px #1b19160f; /* Малая тень. */
   --shadow-md: 0px 4px 12px 0px #1b19161a; /* Средняя тень. */
   --shadow-lg: 0px 12px 32px 0px #1b191629; /* Большая тень. */
+
+  /* Анимация переходов состояний (Motion) */
+  --motion-duration-in: 200ms; /* Появление: переход в Hover, Active, Focus, выбранное состояние, открытие подсказки и меню. */
+  --motion-duration-out: 250ms; /* Пропадание: возврат в Default, закрытие подсказки и меню. */
+  --motion-easing-out: cubic-bezier(0, 0, 0.58, 1); /* Кривая всех переходов состояний — ease-out. */
 }
 
 /* Примитивы в oklch — для экранов с широким охватом (как на сайте). Семантические цвета ссылаются на них */
@@ -248,6 +253,14 @@
     --brand-vray: oklch(47.5% .149906 261.5);
     --brand-corona: oklch(66.5% .214479 38);
     --brand-corona-light: oklch(93.9% .041981 66.1);
+  }
+}
+
+/* «Уменьшить движение» в системе — переходы мгновенные */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-in: 0ms;
+    --motion-duration-out: 0ms;
   }
 }
 

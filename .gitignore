@@ -48,3 +48,6 @@ storybook-static
 
 # Storybook debug
 debug-storybook.log
+
+# Локальные настройки Claude
+.claude/

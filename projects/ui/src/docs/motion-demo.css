@@ -1,0 +1,31 @@
+/* Только для страницы «Основы / Анимация переходов»: демо-плитки на токенах, без компонентов. */
+.motion-demo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 120px;
+  height: var(--size-control-md);
+  padding: 0 var(--space-16);
+  border: 0;
+  border-radius: var(--radius-8);
+  font-family: var(--font-family-sans);
+  cursor: pointer;
+  transition-property: background-color, color;
+  transition-duration: var(--motion-duration-out);
+  transition-timing-function: var(--motion-easing-out);
+}
+.motion-demo:hover,
+.motion-demo:active { transition-duration: var(--motion-duration-in); }
+
+.motion-demo--accent { background: var(--color-fill-accent); color: var(--color-text-on-accent); }
+.motion-demo--accent:hover { background: var(--color-fill-accent-hover); }
+.motion-demo--accent:active { background: var(--color-fill-accent-active); }
+
+.motion-demo--neutral { background: var(--color-fill-neutral); color: var(--color-text-default); }
+.motion-demo--neutral:hover { background: var(--color-fill-neutral-hover); }
+.motion-demo--neutral:active { background: var(--color-fill-active); color: var(--color-text-accent-hover); }
+
+.motion-demo--tag { background: var(--color-fill-tag); color: var(--color-text-muted); }
+.motion-demo--tag:hover { background: var(--color-fill-tag-hover); color: var(--color-text-inverse); }
+.motion-demo--tag:active { background: var(--color-fill-tag-active); color: var(--color-text-inverse); }

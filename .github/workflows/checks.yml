@@ -1,0 +1,33 @@
+# Проверки кода при каждом обновлении ветки и pull request:
+# стили только на токенах и текстовых стилях, библиотека собирается.
+name: Проверки
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Стили и сборка
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24 # Angular 22 требует Node 24.15+
+          cache: npm
+
+      - name: Установить зависимости
+        run: npm ci
+
+      - name: Стили — только токены и текстовые стили
+        run: npm run lint:css
+
+      - name: Собрать библиотеку
+        run: npx ng build ui

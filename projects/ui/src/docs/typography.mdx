@@ -1,0 +1,123 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { useEffect, useRef, useState } from 'react';
+
+<Meta title="Основы/Типографика" />
+
+export const STYLES = [
+  { group: 'Заголовки' },
+  { cls: 'text-display', figma: 'display', sample: '3D-модели для интерьера', spec: 'Bold · 54/60 · телефон 36/44', use: 'Заголовок-витрина: первый экран лендинга.' },
+  { cls: 'text-heading-xl', figma: 'heading/xl', sample: 'Офис в рюкзаке: набор визуализатора', spec: 'Bold · 32/38 · телефон 28/34', use: 'Заголовок контента: пост блога, работа в галерее. Один на страницу.' },
+  { cls: 'text-heading-md', figma: 'heading/md', sample: 'Популярные модели', spec: 'Bold · 24/32', use: 'Заголовок страницы со списком (блоги, галерея, модели), секции, попапа, пустого состояния.' },
+  { cls: 'text-heading-sm', figma: 'heading/sm', sample: 'Параметры модели', spec: 'Medium · 20/28', use: 'Малый заголовок: группа полей, подзаголовок в карточке.' },
+  { group: 'Текст' },
+  { cls: 'text-body-lg', figma: 'body/lg', sample: 'Наконец-то обновил свой походный сетап для визуализации.', spec: 'Regular · 20/30', use: 'Крупный текст: вводные абзацы, статьи блога.' },
+  { cls: 'text-body-md', figma: 'body/md', sample: 'Отличная модель, всё открылось в Corona без ошибок.', spec: 'Regular · 16/24', use: 'Основной текст — по умолчанию для любого текста.' },
+  { cls: 'text-body-md-strong', figma: 'body/md-strong', sample: 'Текстуры в комплекте', spec: 'Medium · 16/24', use: 'Выделенное слово или фраза внутри текста (а не ручное «жирное»).' },
+  { cls: 'text-body-sm', figma: 'body/sm', sample: 'Полигонов: 124 500 · Формат: 3ds Max 2021', spec: 'Regular · 14/20', use: 'Мелкий текст: таблицы, плотные списки, описания в карточках.' },
+  { group: 'Подписи' },
+  { cls: 'text-label-xl', figma: 'label/xl', sample: 'Показать ещё', spec: 'Medium · 20/24', use: 'Самая крупная подпись: кнопка Big 48.' },
+  { cls: 'text-label-lg', figma: 'label/lg', sample: 'Скачать модель', spec: 'Medium · 16/20', use: 'Крупные кнопки, пункты меню.' },
+  { cls: 'text-label-md', figma: 'label/md', sample: 'Электронная почта', spec: 'Regular · 14/16', use: 'Кнопки, подписи и заголовки полей, вкладки.' },
+  { cls: 'text-label-md-strong', figma: 'label/md-strong', sample: 'Лофт', spec: 'Medium · 14/16', use: 'Выделенная подпись: тег, счётчик и другие короткие подписи, которым нужно начертание Medium.' },
+  { cls: 'text-label-sm', figma: 'label/sm', sample: 'Покупатель', spec: 'Medium · 12/16', use: 'Бейджи, мелкие кнопки, счётчики.' },
+  { group: 'Сноски' },
+  { cls: 'text-caption-md', figma: 'caption', sample: '11 минут назад', spec: 'Regular · 12/16', use: 'Подсказки под полями, даты, мета-информация.' },
+  { cls: 'text-caption-sm', figma: 'caption/sm', sample: 'PRO', spec: 'Medium · 10/12', use: 'Только короткие метки PRO / FREE / beta.' },
+];
+
+export const Measured = ({ cls, children }) => {
+  const ref = useRef(null);
+  const [v, setV] = useState('');
+  useEffect(() => {
+    const read = () => {
+      if (!ref.current) return;
+      const cs = getComputedStyle(ref.current);
+      setV(`${parseFloat(cs.fontSize)}/${parseFloat(cs.lineHeight)} · ${cs.fontWeight}`);
+    };
+    read();
+    window.addEventListener('resize', read);
+    return () => window.removeEventListener('resize', read);
+  }, []);
+  return (
+    <div>
+      <div ref={ref} className={cls} style={{ color: 'var(--color-text-default)', margin: 0 }}>{children}</div>
+      <div className="text-caption-md" style={{ color: 'var(--color-text-subtle)', marginTop: 4 }}>сейчас на экране: {v}</div>
+    </div>
+  );
+};
+
+export const StyleTable = () => (
+  <div style={{ display: 'flex', flexDirection: 'column' }}>
+    {STYLES.map((s) =>
+      s.group ? (
+        <h3 key={s.group} style={{ margin: '32px 0 8px' }}>{s.group}</h3>
+      ) : (
+        <div key={s.cls} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 260px', gap: 24, padding: '16px 0', borderTop: '1px solid var(--color-border-subtle)' }}>
+          <Measured cls={s.cls}>{s.sample}</Measured>
+          <div style={{ fontSize: 13, lineHeight: '20px' }}>
+            <div><code>.{s.cls}</code></div>
+            <div><code>@include {s.cls};</code></div>
+            <div style={{ color: 'var(--color-text-muted)' }}>Figma: {s.figma} · {s.spec}</div>
+            <div style={{ color: 'var(--color-text-muted)' }}>{s.use}</div>
+          </div>
+        </div>
+      ),
+    )}
+  </div>
+);
+
+# Типографика
+
+Текстовые стили — **не компоненты**, а глобальные классы и SCSS-миксины. Они собираются из Figma («Кит для ии 2026», текстовые стили) вместе с токенами. Шрифт Roboto, начертания 400 / 500 / 700.
+
+Всего 15 стилей. Справа у каждого стиля — имя класса и миксина. Под образцом — реальный размер на экране: переключите размер экрана в панели сверху на «Телефон 375», и `display` с `heading-xl` уменьшатся сами.
+
+<Unstyled>
+  <StyleTable />
+</Unstyled>
+
+## Как подключить
+
+**Классы — на сайт один раз** (Angular, форум, /work — везде одинаково):
+
+```html
+<link rel="stylesheet" href="…/@3ddd/ui/src/styles/tokens.css">
+<link rel="stylesheet" href="…/@3ddd/ui/src/styles/text-styles.css">
+```
+
+В Angular вместо `<link>` — в `angular.json` → `styles`:
+
+```json
+"styles": [
+  "node_modules/@3ddd/ui/src/styles/tokens.css",
+  "node_modules/@3ddd/ui/src/styles/text-styles.css"
+]
+```
+
+**В разметке — тег по смыслу, вид классом:**
+
+```html
+<h1 class="text-heading-xl">Офис в рюкзаке</h1>
+<h2 class="text-heading-md">Популярные модели</h2>
+<p class="text-body-md">Отличная модель, всё открылось в Corona.</p>
+```
+
+**В стилях компонента — миксином** (файл миксинов сам CSS не создаёт, подключать можно где угодно):
+
+```scss
+@use '@3ddd/ui/src/styles/text-styles' as *;
+
+.model-card__title {
+  @include text-label-lg;
+  color: var(--color-text-subtle);
+}
+```
+
+## Правила
+
+1. **Тег отдельно, стиль отдельно.** `h1`–`h6` выбираются по структуре страницы, внешний вид — классом. Заголовок попапа может быть `h2`, а на другой странице `h3` — выглядеть одинаково (`text-heading-md`).
+2. **Никаких своих размеров.** В стилях не пишем `font-size`, `line-height`, `font-weight`, `font-family`, `font` — только класс или миксин. Это проверяется автоматически: `npm run lint:css`.
+3. **Цвет — отдельно, токеном** `var(--color-text-*)`, а не стилем.
+4. **Телефон — сам.** `display` и `heading-xl` уменьшаются ниже 768 через токены. «Стиль на ступень меньше» для мобилки не берём.
+5. **Выделение в абзаце** — `text-body-md-strong`, а не `<b>` с ручным начертанием.
+6. **`caption-sm` (10 px)** — только короткие метки PRO / FREE / beta, не для предложений.

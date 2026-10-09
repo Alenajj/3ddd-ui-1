@@ -1,0 +1,46 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import './motion-demo.css';
+
+<Meta title="Основы/Анимация переходов" />
+
+# Анимация переходов состояний
+
+Правило для всех интерактивных элементов: кнопок, полей, пунктов меню, тегов, флажков, переключателей, карточек, подсказок и меню. В Figma — секция «Анимация состояний» и коллекция переменных Motion.
+
+- **Появление — 0,2 с, ease-out** (`--motion-duration-in`): переход в Hover, Active, Focus, выбранное; открытие подсказки, меню, попапа.
+- **Пропадание — 0,25 с, ease-out** (`--motion-duration-out`): возврат в Default; закрытие подсказки, меню, попапа.
+- **Кривая** (`--motion-easing-out`): ease-out, `cubic-bezier(0, 0, 0.58, 1)`.
+
+Наведите курсор и нажмите — цвет появляется за 0,2 с и гаснет за 0,25 с. Здесь демо-плитки на токенах; в самих компонентах (кнопка, тег, пункт меню…) — то же правило, проверьте в их историях.
+
+<Unstyled>
+<div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap', padding: '24px 12px' }}>
+  <button className="motion-demo motion-demo--accent text-label-lg">Акцент</button>
+  <button className="motion-demo motion-demo--neutral text-label-lg">Нейтральный</button>
+  <button className="motion-demo motion-demo--tag text-label-md-strong">Тег</button>
+</div>
+</Unstyled>
+
+## Как это сделано в CSS
+
+Браузер берёт время перехода из состояния, **в которое** переходит элемент. Поэтому в обычном состоянии стоит время пропадания, а в активных — время появления:
+
+```css
+.ui-button {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: var(--motion-duration-out);   /* 0,25 с — возврат в Default */
+  transition-timing-function: var(--motion-easing-out);
+}
+.ui-button:hover,
+.ui-button:active,
+.ui-button[aria-pressed='true'] {
+  transition-duration: var(--motion-duration-in);    /* 0,2 с — появление */
+}
+```
+
+## Правила
+
+- Анимируем только цвета, рамки, тени и прозрачность. Размеры и положение при смене состояния не меняются.
+- Только токены `--motion-*`, никаких своих `0.1s ease`.
+- Иконки рисуются `currentColor`, поэтому меняют цвет вместе с текстом — отдельно их анимировать не нужно.
+- Если у пользователя включено «Уменьшить движение» (`prefers-reduced-motion: reduce`), токены становятся `0ms` и переходы мгновенные. В компонентах ничего дополнительно делать не нужно.

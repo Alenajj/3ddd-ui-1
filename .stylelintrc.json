@@ -1,0 +1,30 @@
+{
+  "$comment": "Проверка стилей компонентов: шрифты, цвета и время анимации — только токенами и текстовыми стилями. Запуск: npm run lint:css",
+  "plugins": ["stylelint-declaration-strict-value"],
+  "rules": {
+    "property-disallowed-list": [
+      ["font", "transition"],
+      {
+        "message": "Не пишите «%s» одной строкой: шрифт — классом text-* или миксином, анимация — transition-property / transition-duration: var(--motion-duration-*) / transition-timing-function: var(--motion-easing-out)"
+      }
+    ],
+    "scale-unlimited/declaration-strict-value": [
+      [
+        "font-size",
+        "line-height",
+        "font-weight",
+        "font-family",
+        "letter-spacing",
+        "/color$/",
+        "fill",
+        "stroke",
+        "transition-duration",
+        "transition-timing-function"
+      ],
+      {
+        "ignoreValues": ["inherit", "initial", "unset", "transparent", "currentColor", "currentcolor", "none", "0", "normal"],
+        "message": "«${property}: ${value}» — только токен var(--…). Размер, начертание и межстрочный интервал текста — классом text-* или миксином из _text-styles.scss. Цвет — var(--color-…). Время анимации — var(--motion-…)."
+      }
+    ]
+  }
+}

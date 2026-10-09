@@ -1,0 +1,137 @@
+// 3ddd.ru — текстовые стили (SCSS-миксины). Файл не создаёт CSS — можно @use в компонентах.
+// Сгенерировано из tokens/ (Figma «Кит для ии 2026»). Не править вручную: npm run build.
+
+// Заголовок-витрина.
+@mixin text-display {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-display);
+  line-height: var(--font-line-height-display);
+  letter-spacing: 0px;
+}
+
+// Заголовок контента: пост блога, название работы в галерее.
+@mixin text-heading-xl {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-heading-xl);
+  line-height: var(--font-line-height-heading-xl);
+  letter-spacing: 0px;
+}
+
+// Заголовок попапа или модалки. Заголовок страницы со списком контента (общая страница блогов, галереи, моделей), пустые состояния. Заголовок секции.
+@mixin text-heading-md {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-heading-md);
+  line-height: var(--font-line-height-heading-md);
+  letter-spacing: 0px;
+}
+
+// Малый заголовок.
+@mixin text-heading-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0px;
+}
+
+// Крупный текст.
+@mixin text-body-lg {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0px;
+}
+
+// Основной текст.
+@mixin text-body-md {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+// Выделенный основной текст.
+@mixin text-body-md-strong {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+// Мелкий текст.
+@mixin text-body-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+// Самая крупная подпись.
+@mixin text-label-xl {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+// Крупная подпись.
+@mixin text-label-lg {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+// Подпись.
+@mixin text-label-md {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+// Выделенная подпись.
+@mixin text-label-md-strong {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+// Мелкая подпись.
+@mixin text-label-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+// Сноска.
+@mixin text-caption-md {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+// Микро-подпись.
+@mixin text-caption-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0px;
+}

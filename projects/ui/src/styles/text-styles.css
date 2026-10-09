@@ -96,6 +96,15 @@
 /* Подпись. — Кнопки, подписи полей, вкладки. */
 .text-label-md {
   font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+/* Выделенная подпись. — Тег, счётчик и другие короткие подписи, которым нужно начертание Medium. */
+.text-label-md-strong {
+  font-family: var(--font-family-sans);
   font-weight: var(--font-weight-medium);
   font-size: 14px;
   line-height: 16px;
