@@ -7,7 +7,7 @@ export * from './lib/icon/icon';
 export * from './lib/icon/icons';
 
 // Button
-// (добавится в PR button)
+export * from './lib/button/button';
 
 // Tag
 // (добавится в PR tag)

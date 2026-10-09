@@ -1,0 +1,203 @@
+/*
+ * Button — Figma «Кит для ии 2026», секция Buttons (1:3003).
+ * Работает и без Angular: <button class="ui-button ui-button--primary text-label-lg">Скачать</button>
+ *
+ * Высота:   токен size-control-md — 36 на компьютере, сам становится 44 ниже 768.
+ *           size="mobile" принудительно 44, big — 48 (size-control-lg, только round).
+ * Round:    поля по бокам 20, скругление — половина высоты.
+ * Иконки 20, промежуток 6, цвет иконки = цвет текста во всех состояниях.
+ */
+.ui-button {
+  --ui-button-bg: transparent;
+  --ui-button-fg: var(--color-text-default);
+  --ui-button-border: transparent;
+  --ui-button-bg-hover: var(--ui-button-bg);
+  --ui-button-fg-hover: var(--ui-button-fg);
+  --ui-button-border-hover: var(--ui-button-border);
+  --ui-button-bg-active: var(--ui-button-bg-hover);
+  --ui-button-fg-active: var(--ui-button-fg-hover);
+  --ui-button-border-active: var(--ui-button-border-hover);
+  --ui-button-bg-disabled: var(--color-fill-disabled);
+  --ui-button-fg-disabled: var(--color-text-disabled);
+  --ui-button-border-disabled: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  height: var(--size-control-md);
+  margin: 0;
+  padding: 0 var(--space-16);
+  border: var(--border-width-default) solid var(--ui-button-border);
+  border-radius: var(--radius-8);
+  background: var(--ui-button-bg);
+  color: var(--ui-button-fg);
+  font-family: var(--font-family-sans);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: var(--motion-duration-out);
+  transition-timing-function: var(--motion-easing-out);
+}
+
+.ui-button:hover {
+  transition-duration: var(--motion-duration-in);
+  background: var(--ui-button-bg-hover);
+  color: var(--ui-button-fg-hover);
+  border-color: var(--ui-button-border-hover);
+}
+
+/* Active — нажата и осталась выбранной (aria-pressed), и момент нажатия. */
+.ui-button:active,
+.ui-button[aria-pressed='true'] {
+  transition-duration: var(--motion-duration-in);
+  background: var(--ui-button-bg-active);
+  color: var(--ui-button-fg-active);
+  border-color: var(--ui-button-border-active);
+}
+
+.ui-button:disabled,
+.ui-button[aria-disabled='true'] {
+  background: var(--ui-button-bg-disabled);
+  color: var(--ui-button-fg-disabled);
+  border-color: var(--ui-button-border-disabled);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ---------- Размеры ---------- */
+/* В токенах нет постоянной высоты 44 (size-control-md меняется по брейкпоинту) — значение из кита. */
+.ui-button--mobile { height: 44px; }
+.ui-button--big { height: var(--size-control-lg); padding: 0 var(--space-20); }
+
+.ui-button--round { border-radius: var(--radius-full); padding-left: var(--space-20); padding-right: var(--space-20); }
+
+/* Кнопка только с иконкой — квадратная. */
+.ui-button--icon-only { aspect-ratio: 1; padding: 0; }
+
+.ui-button--full { width: 100%; }
+
+/* ---------- Варианты ---------- */
+.ui-button--primary {
+  --ui-button-bg: var(--color-fill-accent);
+  --ui-button-fg: var(--color-text-on-accent);
+  --ui-button-bg-hover: var(--color-fill-accent-hover);
+  --ui-button-bg-active: var(--color-fill-accent-active);
+}
+
+.ui-button--secondary {
+  --ui-button-bg: var(--color-fill-neutral);
+  --ui-button-fg: var(--color-text-accent);
+  --ui-button-bg-hover: var(--color-fill-accent-subtle);
+  --ui-button-fg-hover: var(--color-text-accent-hover);
+  --ui-button-bg-active: var(--color-fill-active);
+  --ui-button-fg-active: var(--color-text-accent-hover);
+}
+
+.ui-button--white-accent {
+  --ui-button-bg: var(--color-fill-base);
+  --ui-button-fg: var(--color-text-accent);
+  --ui-button-bg-hover: var(--color-fill-accent-subtle);
+  --ui-button-fg-hover: var(--color-text-accent-hover);
+  --ui-button-bg-active: var(--color-fill-active);
+  --ui-button-fg-active: var(--color-text-accent-hover);
+  --ui-button-bg-disabled: var(--color-fill-base);
+}
+
+.ui-button--soft {
+  --ui-button-bg: var(--color-fill-accent-soft);
+  --ui-button-fg: var(--color-text-on-accent-soft);
+  --ui-button-bg-hover: var(--color-fill-accent-soft-hover);
+  --ui-button-fg-hover: var(--color-text-on-accent);
+  --ui-button-bg-active: var(--color-fill-accent-soft-active);
+  --ui-button-fg-active: var(--color-text-on-accent);
+}
+
+.ui-button--neutral {
+  --ui-button-bg: var(--color-fill-neutral);
+  --ui-button-fg: var(--color-text-default);
+  --ui-button-bg-hover: var(--color-fill-neutral-hover);
+  --ui-button-bg-active: var(--color-fill-active);
+  --ui-button-fg-active: var(--color-text-accent-hover);
+}
+
+/* Round Neutral: текст приглушённый, при наведении — основной. */
+.ui-button--round.ui-button--neutral {
+  --ui-button-fg: var(--color-text-muted);
+  --ui-button-fg-hover: var(--color-text-default);
+}
+
+.ui-button--success {
+  --ui-button-bg: var(--color-fill-success);
+  --ui-button-fg: var(--color-text-on-accent);
+  --ui-button-bg-hover: var(--color-fill-success-hover);
+  --ui-button-bg-active: var(--color-fill-success-active);
+}
+
+.ui-button--danger {
+  --ui-button-bg: var(--color-fill-danger);
+  --ui-button-fg: var(--color-text-on-accent);
+  --ui-button-bg-hover: var(--color-fill-danger-hover);
+  --ui-button-bg-active: var(--color-fill-danger-active);
+}
+
+.ui-button--inverse {
+  --ui-button-bg: var(--color-fill-inverse);
+  --ui-button-fg: var(--color-text-inverse);
+  --ui-button-bg-hover: var(--color-fill-inverse-hover);
+  --ui-button-bg-active: var(--color-fill-inverse-hover);
+  --ui-button-bg-disabled: var(--color-fill-inverse);
+  --ui-button-fg-disabled: var(--color-text-inverse-disabled);
+}
+
+.ui-button--on-image {
+  --ui-button-bg: transparent;
+  --ui-button-fg: var(--color-text-inverse-muted);
+  --ui-button-bg-hover: var(--color-fill-inverse);
+  --ui-button-fg-hover: var(--color-text-on-accent);
+  --ui-button-bg-active: var(--color-fill-base);
+  --ui-button-fg-active: var(--color-text-default);
+  --ui-button-bg-disabled: var(--color-fill-inverse);
+  --ui-button-fg-disabled: var(--color-text-inverse-disabled);
+}
+
+.ui-button--white {
+  --ui-button-bg: var(--color-fill-base);
+  --ui-button-fg: var(--color-text-default);
+  --ui-button-bg-hover: var(--color-fill-neutral-hover);
+  --ui-button-bg-active: var(--color-fill-active);
+  --ui-button-fg-active: var(--color-text-accent-hover);
+  --ui-button-bg-disabled: var(--color-fill-base);
+}
+
+.ui-button--ghost {
+  --ui-button-bg: transparent;
+  --ui-button-fg: var(--color-text-default);
+  --ui-button-bg-hover: var(--color-fill-neutral-hover);
+  --ui-button-bg-active: var(--color-fill-accent);
+  --ui-button-fg-active: var(--color-text-on-accent);
+  --ui-button-bg-disabled: var(--color-fill-base);
+}
+
+.ui-button--outline {
+  --ui-button-bg: var(--color-fill-base);
+  --ui-button-fg: var(--color-text-default);
+  --ui-button-border: var(--color-border-default);
+  --ui-button-bg-hover: var(--color-fill-neutral-hover);
+  --ui-button-bg-active: var(--color-fill-active);
+  --ui-button-fg-active: var(--color-text-accent-hover);
+  --ui-button-border-active: var(--color-border-active);
+  --ui-button-bg-disabled: var(--color-fill-base);
+  --ui-button-border-disabled: var(--color-border-disabled);
+  /* В ките у Default своя тень 0 1 4 #8FA0AA 10% — ближайший токен shadow-sm. */
+  box-shadow: var(--shadow-sm);
+}
+
+.ui-button--outline:hover,
+.ui-button--outline:active,
+.ui-button--outline[aria-pressed='true'] {
+  box-shadow: none;
+}
