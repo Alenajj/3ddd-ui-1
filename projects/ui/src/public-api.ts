@@ -10,7 +10,7 @@ export * from './lib/icon/icons';
 // (добавится в PR button)
 
 // Tag
-// (добавится в PR tag)
+export * from './lib/tag/tag';
 
 // Checkbox
 // (добавится в PR checkbox)
