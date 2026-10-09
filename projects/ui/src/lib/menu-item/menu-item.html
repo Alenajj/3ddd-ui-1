@@ -1,0 +1,8 @@
+<ng-content select="ui-checkbox, ui-icon, [uiMenuItemStart]" />
+<span class="ui-menu-item__label"><ng-content /></span>
+@if (chevron()) {
+  <ui-icon [name]="expanded() ? 'chevron-down' : 'chevron-right'" />
+}
+@if (counter() !== undefined && counter() !== null) {
+  <span class="ui-menu-item__counter text-label-md-strong">{{ counter() }}</span>
+}

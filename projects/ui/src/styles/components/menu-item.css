@@ -1,0 +1,110 @@
+/*
+ * Menu Item — Figma «Кит для ии 2026», Menu Item / Unified (273:33110).
+ * Без Angular: <a class="ui-menu-item ui-menu-item--accent text-label-lg" href="#">Кресла</a>
+ *
+ * Размер пункта = его содержимое (высота строки 20). Подсветка Hover/Active рисуется
+ * за пунктом и выходит за него: Medium — на 12 по бокам и 8 сверху/снизу (36 в высоту),
+ * Large — на 16 и 12 (44). Шаг между пунктами задаёт список, а не пункт:
+ * Medium — space-16, Large — space-24. У контейнера оставляйте поле не меньше выступа.
+ * Порядок слотов: флажок · иконка · подпись · шеврон · счётчик. Иконки — цвета текста.
+ */
+.ui-menu-item {
+  --ui-mi-fg: var(--color-text-default);
+  --ui-mi-fg-hover: var(--ui-mi-fg);
+  --ui-mi-bg: transparent;
+  --ui-mi-x: var(--space-12);
+  --ui-mi-y: var(--space-8);
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ui-mi-fg);
+  font-family: var(--font-family-sans);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition-property: color;
+  transition-duration: var(--motion-duration-out);
+  transition-timing-function: var(--motion-easing-out);
+}
+
+/* Зона нажатия и подсветка (Hit area в ките). */
+.ui-menu-item::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: calc(var(--ui-mi-y) * -1) calc(var(--ui-mi-x) * -1);
+  border-radius: var(--radius-8);
+  background: var(--ui-mi-bg);
+  transition-property: background-color;
+  transition-duration: var(--motion-duration-out);
+  transition-timing-function: var(--motion-easing-out);
+}
+
+.ui-menu-item--large { --ui-mi-x: var(--space-16); --ui-mi-y: var(--space-12); }
+
+.ui-menu-item--accent {
+  --ui-mi-fg: var(--color-text-accent);
+  --ui-mi-fg-hover: var(--color-text-accent-hover);
+}
+
+.ui-menu-item:hover {
+  transition-duration: var(--motion-duration-in);
+  --ui-mi-bg: var(--color-fill-ghost-hover);
+  color: var(--ui-mi-fg-hover);
+}
+
+/* Active — выбранный пункт (aria-current) или нажатый. */
+.ui-menu-item[aria-current='page'],
+.ui-menu-item[aria-current='true'],
+.ui-menu-item:active {
+  transition-duration: var(--motion-duration-in);
+  --ui-mi-bg: var(--color-fill-active);
+  color: var(--color-text-accent-hover);
+}
+
+.ui-menu-item:disabled,
+.ui-menu-item[aria-disabled='true'] {
+  --ui-mi-bg: transparent;
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Время перехода подложки — из состояния пункта: вход 0,2 с, выход 0,25 с. */
+.ui-menu-item:hover::before,
+.ui-menu-item:active::before,
+.ui-menu-item[aria-current='page']::before,
+.ui-menu-item[aria-current='true']::before {
+  transition-duration: var(--motion-duration-in);
+}
+
+/* Растянуть на ширину списка: шеврон и счётчик уходят вправо, длинная подпись переносится. */
+.ui-menu-item--fill { display: flex; width: 100%; }
+.ui-menu-item--fill .ui-menu-item__label { flex: 1 1 auto; min-width: 0; }
+
+.ui-menu-item__label { min-width: 0; }
+
+/* Счётчик (Counter / Big в ките): 20, скругление 6, 14/16 на синем. */
+.ui-menu-item__counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-6);
+  background: var(--color-fill-accent);
+  color: var(--color-text-on-accent);
+}
+
+/* Список пунктов: шаг задаёт список. */
+.ui-menu-list { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-16); }
+.ui-menu-list--large { gap: var(--space-24); }

@@ -19,4 +19,4 @@ export * from './lib/checkbox/checkbox';
 // (добавится в PR input)
 
 // Menu Item
-// (добавится в PR menu-item)
+export * from './lib/menu-item/menu-item';
