@@ -10,7 +10,7 @@ import { UiIcon } from '../icon/icon';
  *   <button ui-menu-item chevron [expanded]="open" (click)="open = !open">Мебель</button>
  * </nav>
  * ```
- * Размер пункта — только его содержимое; подсветка выходит за него (Medium 12/8, Large 16/12).
+ * Размер пункта — только его содержимое; подсветка выходит за него (по бокам 12; сверху и снизу Medium 8, Large 12).
  * Шаг между пунктами задаёт список: `.ui-menu-list` (16) или `.ui-menu-list--large` (24).
  * Иконку кладите внутрь как `<ui-icon>` перед текстом.
  */
